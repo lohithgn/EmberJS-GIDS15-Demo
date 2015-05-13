@@ -1,0 +1,58 @@
+.trackscontainer{
+	float:left;
+	width:360px;
+	height:300px;
+	margin:10px;
+}
+
+.tracks
+{
+	padding:10px;
+	color:white;
+	background-color: red;
+	height:300px;
+	border-radius:5px;
+}
+
+.netcloud{
+	background-color: #cc521e;
+}
+
+.webmobile{
+	background-color: #458e2f
+}
+
+.java{
+	background-color: #0E70A7
+}
+
+.dataanalytics{
+	background-color: #5B2A7C
+}
+
+.tracks > h4, h3, h5{
+	color:white;
+}
+
+.container > h5 {
+	color:black;
+}
+
+#tracks, #session {
+	margin-top:70px;
+}
+
+.sessionscontainer{
+	float:left;
+	height:230px;
+	width:368px;
+	margin:0px;
+}
+
+.session{
+	width:358px;
+	height:100px;
+	padding:20px 0px 20px 20px;
+	color:white;
+	border-radius:0 0 5px 5px
+}

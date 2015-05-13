@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ember JS Demo</title>
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+<body>
+<script type="text/x-handlebars" data-template-name="application">
+	<div class="navbar navbar-default navbar-fixed-top">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <a href="../" class="navbar-brand">GIDS 2015</a>
+	    </div>
+	  </div>
+	</div>
+	{{outlet}}							
+</script>	
+<script type="text/x-handlebars" data-template-name="tracks">
+	<div class="container" id="tracks"> 
+		<div class=row>
+			<div class="col-lg-12">
+				<ol class="breadcrumb">
+				  <li class="active">Home</li>
+				</ol>
+			</div>
+		</div>
+		<div class=row>
+			<div class="col-lg-12">
+				{{#each model as |track|}}
+					{{partial "tracksitem"}}			
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="tracksitem">
+	{{#link-to "track" track tagName=a class="trackscontainer"}}
+		<div class="tracks {{track.tag}}"> 
+	      	<h3>{{track.name}}</h3> 
+	      	<h5>{{datefmt track.date 'dddd. MMMM D, YYYY'}}</h5>
+	      	<br/>
+	  		<p><small>{{track.desc}}</small></p>
+	  	</div>
+	{{/link-to}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="track">
+	<div class="container" id="tracks"> 
+		<div class=row>
+			<div class="col-lg-12">
+				<ol class="breadcrumb">
+				  <li class="active">{{#link-to "index"}}Home{{/link-to}}</li>
+				  <li class="active">{{model.name}}</li>
+				</ol>
+			</div>
+		</div>
+		<div class=row>
+			<div class="col-lg-12">
+				<h1>{{model.name}}</h1>
+				<small>{{datefmt model.date "dddd. MMMM D, YYYY"}}</small>
+				<p>
+					{{render "sessions" model.sessions}}
+				</p>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="sessions">
+	{{#each sortedSessions as |session|}}
+		<div class="sessionscontainer">
+			{{#link-to "session" session tagName="div"}}
+		      <img src="images/{{session.img}}" width=358>
+		      <div class="session {{session.track.tag}}">
+		      	<h4 style="color:white">{{session.title}}</h4>
+		      	<h5 style="color:white">{{session.speaker}}</h5>
+		      </div>
+		    {{/link-to}}
+		</div>
+	{{else}}
+		<h3>No Sessions Found.</h3>
+	{{/each}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="session">
+	<div class="container" id="session"> 
+		<div class=row>
+			<div class="col-lg-12">
+				<ol class="breadcrumb">
+				  <li class="active">{{#link-to "index"}}Home{{/link-to}}</li>
+				  <li class="active">{{#link-to "track" model.track}}{{model.track.name}}{{/link-to}}</li>
+				  <li>{{model.title}}</li>
+				</ol>
+			</div>
+		</div>
+		<div class=row>
+			<div class="col-lg-12">
+				<h1>{{model.title}}</h1>
+				<img src="images/{{img}}" height=250>
+				<h2>Speaker: {{model.speaker}}</h2>
+				<h2>{{model.hall}}</h2>
+				<h2>{{model.time}}</h2>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/moment.js"></script>
+<script type="text/javascript" src="lib/ember.js"></script>
+<script type="text/javascript" src="lib/ember-template-compiler.js"></script>
+<script type="text/javascript" src="lib/ember-data.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/models.js"></script>
+<script type="text/javascript" src="scripts/fixtures.js"></script>
+<script type="text/javascript" src="scripts/router.js"></script>
+<script type="text/javascript" src="scripts/routes.js"></script>
+<script type="text/javascript" src="scripts/controller.js"></script>
+<script type="text/javascript" src="scripts/helpers.js"></script>
+</body>
+</html>
